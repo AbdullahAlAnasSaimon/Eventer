@@ -4,8 +4,8 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main>
-      <h1 className="text-4xl">Home</h1>
-      <Button variant="destructive">Delete</Button>
+      {/* <h1 className="text-4xl">Home</h1> */}
+      {/* <Button variant="destructive">Delete</Button> */}
     </main>
   );
 }
