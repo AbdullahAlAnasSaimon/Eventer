@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/images/logo.svg";
 import { Button } from "../ui/button";
-import { SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import NavItems from "./NavItems";
+import MobileNav from "./MobileNav";
 
 export default function Header() {
   return (
@@ -12,7 +14,17 @@ export default function Header() {
           <Image src={logo} alt="Company-logo" />
         </Link>
 
+        <SignedIn>
+          <nav className="md:flex-between hidden w-full max-w-xs">
+            <NavItems />
+          </nav>
+        </SignedIn>
+
         <div className="flex w-32 justify-end gap-3">
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+          <MobileNav />
           <SignedOut>
             <Button asChild className="rounded-full" size="lg">
               <Link href="/sign-in">Log In</Link>
