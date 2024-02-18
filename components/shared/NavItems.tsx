@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function NavItems() {
-  return <div>NavItems</div>;
+  return <ul className="md:flex-between flex"></ul>;
 }
