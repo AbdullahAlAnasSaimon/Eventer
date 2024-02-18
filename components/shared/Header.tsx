@@ -9,27 +9,29 @@ import MobileNav from "./MobileNav";
 export default function Header() {
   return (
     <header className="w-full border-b">
-      <div className="wrapper flex items-center justify-between">
-        <Link href="/" className="w-36">
-          <Image src={logo} alt="Company-logo" />
-        </Link>
+      <div className="w-11/12 mx-auto">
+        <div className="wrapper flex items-center justify-between">
+          <Link href="/" className="w-36">
+            <Image src={logo} alt="Company-logo" />
+          </Link>
 
-        <SignedIn>
-          <nav className="md:flex-between hidden w-full max-w-xs">
-            <NavItems />
-          </nav>
-        </SignedIn>
-
-        <div className="flex w-32 justify-end gap-3">
           <SignedIn>
-            <UserButton afterSignOutUrl="/" />
+            <nav className="md:flex-between hidden w-full max-w-xs">
+              <NavItems />
+            </nav>
           </SignedIn>
-          <MobileNav />
-          <SignedOut>
-            <Button asChild className="rounded-sm" size="lg">
-              <Link href="/sign-in">Log In</Link>
-            </Button>
-          </SignedOut>
+
+          <div className="flex w-32 justify-end gap-3">
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+            <MobileNav />
+            <SignedOut>
+              <Button asChild className="rounded-sm" size="lg">
+                <Link href="/sign-in">Log In</Link>
+              </Button>
+            </SignedOut>
+          </div>
         </div>
       </div>
     </header>
