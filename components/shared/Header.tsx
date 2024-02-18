@@ -26,7 +26,7 @@ export default function Header() {
           </SignedIn>
           <MobileNav />
           <SignedOut>
-            <Button asChild className="rounded-full" size="lg">
+            <Button asChild className="rounded-sm" size="lg">
               <Link href="/sign-in">Log In</Link>
             </Button>
           </SignedOut>
