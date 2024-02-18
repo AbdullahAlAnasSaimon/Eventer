@@ -21,16 +21,16 @@ export default function Header() {
             </nav>
           </SignedIn>
 
-          <div className="flex w-32 justify-end gap-3">
+          <div className="flex w-auto justify-end gap-3">
             <SignedIn>
               <UserButton afterSignOutUrl="/" />
             </SignedIn>
-            <MobileNav />
             <SignedOut>
               <Button asChild className="rounded-sm" size="lg">
                 <Link href="/sign-in">Log In</Link>
               </Button>
             </SignedOut>
+            <MobileNav />
           </div>
         </div>
       </div>

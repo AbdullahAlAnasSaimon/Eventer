@@ -15,7 +15,7 @@ import NavItems from "./NavItems";
 
 export default function MobileNav() {
   return (
-    <nav>
+    <nav className="lg:hidden md:visible">
       <Sheet>
         <SheetTrigger className="align-middle">
           <Image
