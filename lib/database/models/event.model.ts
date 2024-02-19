@@ -1,6 +1,22 @@
-import { Schema, model, models } from "mongoose";
+import { Document, Schema, model, models } from "mongoose";
 
-const EventSchema = new Schema({
+interface IEvent extends Document {
+  _id: string;
+  title: string;
+  description?: string;
+  location?: string;
+  createdAt: Date;
+  imageUrl: string;
+  startDateTime: Date;
+  endDateTime: Date;
+  price?: string;
+  isFree: boolean;
+  url?: string;
+  category: { _id: string; name: string };
+  organizer: { _id: string; firstName: string; lastName: string };
+}
+
+const EventSchema = new Schema<IEvent>({
   title: {
     type: String,
     required: true,
