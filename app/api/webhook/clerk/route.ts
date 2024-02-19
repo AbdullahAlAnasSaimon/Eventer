@@ -1,7 +1,7 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { WebhookEvent } from "@clerk/nextjs/server";
-import { createUser } from "@/lib/actions/user.actions";
+import { createUser, deleteUser, updateUser } from "@/lib/actions/user.actions";
 import { clerkClient } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
@@ -68,7 +68,7 @@ export async function POST(req: Request) {
       photo: image_url,
     };
 
-    const newUser = createUser(user);
+    const newUser = await createUser(user);
 
     if (newUser) {
       await clerkClient.users.updateUserMetadata(id, {
@@ -76,38 +76,33 @@ export async function POST(req: Request) {
           userId: newUser._id,
         },
       });
-
-      return NextResponse.json({ message: "OK", user: newUser });
-    } else {
-      // Handle case where createUser returns null or undefined
-      return NextResponse.json({ message: "Failed to create user" });
     }
+
+    return NextResponse.json({ message: "OK", user: newUser });
   }
 
   if (eventType === "user.updated") {
     const { id, image_url, first_name, last_name, username } = evt.data;
 
     const user = {
-      username: username!,
       firstName: first_name,
       lastName: last_name,
+      username: username!,
       photo: image_url,
     };
 
-    const updateUser = updateUser(id, user);
+    const updatedUser = await updateUser(id, user);
 
-    return NextResponse.json({ message: "OK", user: updateUser });
+    return NextResponse.json({ message: "OK", user: updatedUser });
   }
 
   if (eventType === "user.deleted") {
     const { id } = evt.data;
+
     const deletedUser = await deleteUser(id!);
 
     return NextResponse.json({ message: "OK", user: deletedUser });
   }
-
-  // console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
-  // console.log("Webhook body:", body);
 
   return new Response("", { status: 200 });
 }
