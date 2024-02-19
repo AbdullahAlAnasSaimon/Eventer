@@ -34,7 +34,7 @@ export default function Dropdown({ onChangeHandler, value }: DropdownProps) {
   const handleAddCategory = () => {};
 
   return (
-    <Select onValueChange={onChangeHandler} defaultValues={value}>
+    <Select onValueChange={onChangeHandler} defaultValue={value}>
       <SelectTrigger className="select-field">
         <SelectValue placeholder="Category" />
       </SelectTrigger>
