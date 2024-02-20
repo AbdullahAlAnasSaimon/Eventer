@@ -62,7 +62,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
             control={form.control}
             name="title"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full ">
                 <FormControl>
                   <Input
                     placeholder="Event Title"
@@ -78,7 +78,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
             control={form.control}
             name="categoryId"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full">
                 <FormControl>
                   <Dropdown
                     onChangeHandler={field.onChange}
@@ -132,7 +132,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-sm bg-grey-50 px-4 py-2">
                     <Image
                       src={location}
                       alt="calendar"
@@ -160,7 +160,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-sm bg-grey-50 px-4 py-2">
                     <Image
                       src={calender}
                       alt="calendar"
@@ -192,7 +192,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-sm bg-grey-50 px-4 py-2">
                     <Image
                       src={calender}
                       alt="calendar"
@@ -226,7 +226,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-sm bg-grey-50 px-4 py-2">
                     <Image
                       src={dollar}
                       alt="dollar"
@@ -277,7 +277,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-sm bg-grey-50 px-4 py-2">
                     <Image src={link} alt="link" width={24} height={24} />
 
                     <Input
@@ -293,7 +293,14 @@ export default function EventForm({ userId, type }: EventFormProps) {
           />
         </div>
 
-        <Button type="submit">Submit</Button>
+        <Button
+          type="submit"
+          size="lg"
+          disabled={form.formState.isSubmitting}
+          className="button col-span-2 w-full"
+        >
+          {form.formState.isSubmitting ? "Submitting..." : `${type} Event`}
+        </Button>
       </form>
     </Form>
   );
