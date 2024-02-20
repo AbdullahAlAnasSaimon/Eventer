@@ -22,7 +22,13 @@ import { FileUploader } from "./FileUploader";
 import { useState } from "react";
 import Image from "next/image";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { Checkbox } from "../ui/checkbox";
+
+import location from "@/public/icons/location-grey.svg";
+import calender from "@/public/icons/calendar.svg";
+import dollar from "@/public/icons/dollar.svg";
+import link from "@/public/icons/link.svg";
 
 type EventFormProps = {
   userId: string;
@@ -128,7 +134,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
                     <Image
-                      src="/assets/icons/location-grey.svg"
+                      src={location}
                       alt="calendar"
                       width={24}
                       height={24}
@@ -156,7 +162,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
                     <Image
-                      src="/assets/icons/calendar.svg"
+                      src={calender}
                       alt="calendar"
                       width={24}
                       height={24}
@@ -188,7 +194,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
                     <Image
-                      src="/assets/icons/calendar.svg"
+                      src={calender}
                       alt="calendar"
                       width={24}
                       height={24}
@@ -222,7 +228,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
                     <Image
-                      src="/assets/icons/dollar.svg"
+                      src={dollar}
                       alt="dollar"
                       width={24}
                       height={24}
@@ -272,12 +278,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
               <FormItem className="w-full">
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
-                    <Image
-                      src="/public/icons/link.svg"
-                      alt="link"
-                      width={24}
-                      height={24}
-                    />
+                    <Image src={link} alt="link" width={24} height={24} />
 
                     <Input
                       placeholder="URL"
