@@ -106,7 +106,7 @@ export default function EventForm({ userId, type }: EventFormProps) {
               <FormItem className="w-full">
                 <FormControl className="h-72"></FormControl>
                 <FileUploader
-                  onFiledChange={field.onChange}
+                  onFieldChange={field.onChange}
                   imageUrl={field.value}
                   setFiles={setFiles}
                 />
