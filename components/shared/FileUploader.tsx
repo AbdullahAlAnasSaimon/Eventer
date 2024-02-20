@@ -8,6 +8,7 @@ import { generateClientDropzoneAccept } from "uploadthing/client";
 import { Button } from "@/components/ui/button";
 import { convertFileToUrl } from "@/lib/utils";
 import uploadIcon from "@/public/icons/file-upload.svg";
+import Image from "next/image";
 
 type FileUploaderProps = {
   onFieldChange: (url: string) => void;
@@ -29,8 +30,6 @@ export function FileUploader({
     accept: "image/*" ? generateClientDropzoneAccept(["image/*"]) : undefined,
   });
 
-  // console.log(onDrop);
-
   return (
     <div
       {...getRootProps()}
@@ -40,7 +39,7 @@ export function FileUploader({
 
       {imageUrl ? (
         <div className="flex h-full w-full flex-1 justify-center ">
-          <img
+          <Image
             src={imageUrl}
             alt="image"
             width={250}
@@ -50,7 +49,7 @@ export function FileUploader({
         </div>
       ) : (
         <div className="flex-center flex-col py-5 text-grey-500">
-          <img src={uploadIcon} width={77} height={77} alt="file upload" />
+          <Image src={uploadIcon} width={77} height={77} alt="file upload" />
           <h3 className="mb-2 mt-2">Drag photo here</h3>
           <p className="p-medium-12 mb-4">SVG, PNG, JPG</p>
           <Button type="button" className="rounded-sm">
