@@ -31,6 +31,7 @@ import calender from "@/public/icons/calendar.svg";
 import dollar from "@/public/icons/dollar.svg";
 import link from "@/public/icons/link.svg";
 import { useRouter } from "next/navigation";
+import { createEvent } from "@/lib/actions/event.actions";
 
 type EventFormProps = {
   userId: string;
@@ -64,6 +65,15 @@ export default function EventForm({ userId, type }: EventFormProps) {
 
     if (type === "Create") {
       try {
+        const newEvent = await createEvent({
+          event: { ...values, imageUrl: uploadedImageUrl },
+          userId,
+          path: "/profile",
+        });
+        if (newEvent) {
+          form.reset();
+          router.push(`/events/${newEvent._id}`);
+        }
       } catch (error) {
         console.error(error);
       }
