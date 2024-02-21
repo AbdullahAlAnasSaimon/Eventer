@@ -63,7 +63,7 @@ export default function Dropdown({ onChangeHandler, value }: DropdownProps) {
           categories?.map((category) => (
             <SelectItem
               key={category._id}
-              value={category.name}
+              value={category._id}
               className="p-regular-14"
             >
               {category.name}
