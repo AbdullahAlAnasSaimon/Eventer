@@ -1,7 +1,9 @@
 import { getEventById } from "@/lib/actions/event.actions";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
-import React from "react";
+
+import calender from "@/public/icons/calendar.svg";
+import { formatDateTime } from "@/lib/utils";
 
 export default async function EventDetails({
   params: { id },
@@ -30,6 +32,38 @@ export default async function EventDetails({
                 </p>
                 <p className="p-medium-16 rounded-lg bg-grey-500/10 px-4 py-2.5 text-grey-500">
                   {event.category.name}
+                </p>
+              </div>
+
+              <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
+                by{" "}
+                <span className="text-blue-500">
+                  {event.organizer.firstName} {event.organizer.lastName}
+                </span>
+              </p>
+            </div>
+          </div>
+          {/* checkout button */}
+
+          <div className="flex flex-col gap-5">
+            <div className="flex gap-2 md:gap-3">
+              <Image
+                src={calender}
+                alt="calender-icon"
+                width={32}
+                height={32}
+              />
+              <div className="p-medium-16 flex flex-wrap items-center">
+                <p>
+                  {formatDateTime(event.startDateTime).dateOnly}
+                  {" - "}
+                  {formatDateTime(event.startDateTime).timeOnly}
+                </p>
+                <p className="ml-1 text-blue-700 font-bold">{"To"}</p>
+                <p className="ml-1">
+                  {formatDateTime(event.endDateTime).dateOnly}
+                  {" - "}
+                  {formatDateTime(event.endDateTime).timeOnly}
                 </p>
               </div>
             </div>
