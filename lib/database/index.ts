@@ -19,13 +19,6 @@ export const connectToDatabase = async () => {
 
     cached.conn = await cached.promise;
 
-    // Check if the connection is successful
-    if (cached.conn) {
-      console.log("Database connection established successfully");
-    } else {
-      console.error("Failed to establish database connection");
-    }
-
     return cached.conn;
   } catch (error) {
     console.error("Error connecting to database:", error);

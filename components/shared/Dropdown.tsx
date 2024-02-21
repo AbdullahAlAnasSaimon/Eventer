@@ -72,7 +72,7 @@ export default function Dropdown({ onChangeHandler, value }: DropdownProps) {
 
         <AlertDialog>
           <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-primary-500 bg-primary-50">
-            Open
+            Add New Category +
           </AlertDialogTrigger>
           <AlertDialogContent className="bg-white rounded-sm">
             <AlertDialogHeader>
