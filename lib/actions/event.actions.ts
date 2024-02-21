@@ -14,7 +14,7 @@ const populateEvent = async (query: any) => {
       model: User,
       select: "_id firstName lastName",
     })
-    .populate({ path: "categoryId", model: Category, select: "_id name" });
+    .populate({ path: "category", model: Category, select: "_id name" });
 };
 
 export const createEvent = async ({
