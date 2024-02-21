@@ -1,9 +1,10 @@
 import { getEventById } from "@/lib/actions/event.actions";
 import { SearchParamProps } from "@/types";
+import { formatDateTime } from "@/lib/utils";
 import Image from "next/image";
 
 import calender from "@/public/icons/calendar.svg";
-import { formatDateTime } from "@/lib/utils";
+import location from "@/public/icons/location.svg";
 
 export default async function EventDetails({
   params: { id },
@@ -59,7 +60,7 @@ export default async function EventDetails({
                   {" - "}
                   {formatDateTime(event.startDateTime).timeOnly}
                 </p>
-                <p className="ml-1 text-blue-700 font-bold">{"To"}</p>
+                <p className="ml-1 text-blue-700 font-bold">{"/"}</p>
                 <p className="ml-1">
                   {formatDateTime(event.endDateTime).dateOnly}
                   {" - "}
@@ -67,6 +68,24 @@ export default async function EventDetails({
                 </p>
               </div>
             </div>
+
+            <div className="p-regular-20 flex items-center gap-3">
+              <Image
+                src={location}
+                alt="location-icon"
+                width={32}
+                height={32}
+              />
+              <p className="p-medium-16">{event.location}</p>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <p className="p-bold-20 text-grey-600">What you'll learn</p>
+            <p className="p-medium-16">{event.description}</p>
+            <p className="p-medium-16 truncate text-primary-500 underline">
+              {event.url}
+            </p>
           </div>
         </div>
       </div>
