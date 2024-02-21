@@ -30,6 +30,7 @@ import location from "@/public/icons/location-grey.svg";
 import calender from "@/public/icons/calendar.svg";
 import dollar from "@/public/icons/dollar.svg";
 import link from "@/public/icons/link.svg";
+import { useRouter } from "next/navigation";
 
 type EventFormProps = {
   userId: string;
@@ -39,8 +40,8 @@ type EventFormProps = {
 export default function EventForm({ userId, type }: EventFormProps) {
   const [files, setFiles] = useState<File[]>([]);
   const initialValues = eventDefaultValues;
-
   const { startUpload } = useUploadThing("imageUploader");
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
@@ -59,6 +60,13 @@ export default function EventForm({ userId, type }: EventFormProps) {
       }
 
       uploadedImageUrl = uploadedImages[0].url;
+    }
+
+    if (type === "Create") {
+      try {
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 
