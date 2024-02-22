@@ -22,5 +22,16 @@ export default function Collection({
   totalPages = 0,
   urlParamName,
 }: CollectionProps) {
-  return <div>Collection</div>;
+  return (
+    <>
+      {data.length > 0 ? (
+        <div></div>
+      ) : (
+        <div>
+          <h3>{emptyTitle}</h3>
+          <p>{emptyStateSubtext}</p>
+        </div>
+      )}
+    </>
+  );
 }
