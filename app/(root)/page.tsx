@@ -3,8 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import heroImg from "@/public/images/hero.png";
 import Collection from "@/components/shared/Collection";
+import { getAllEvents } from "@/lib/actions/event.actions";
 
-export default function Home() {
+export default async function Home() {
+  const events = await getAllEvents({
+    query: "",
+    category: "",
+    limit: 6,
+    page: 1,
+  });
+
+  console.log(events);
+
   return (
     <>
       {/* hero section */}
@@ -54,7 +64,7 @@ export default function Home() {
           </div>
 
           <Collection
-            data={[]}
+            data={events?.data}
             emptyTitle="No Events Found"
             emptyStateSubtext="Come back later"
             collectionType="All_Events"
