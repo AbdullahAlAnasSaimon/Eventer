@@ -27,9 +27,9 @@ export default function Collection({
       {data.length > 0 ? (
         <div></div>
       ) : (
-        <div>
-          <h3>{emptyTitle}</h3>
-          <p>{emptyStateSubtext}</p>
+        <div className="flex-center wrapper main-h-[200px] w-full flex-col gap-3 rounded-[14px] bg-grey-50 py-28 text-center">
+          <h3 className="p-bold-20">{emptyTitle}</h3>
+          <p className="p-regular-14">{emptyStateSubtext}</p>
         </div>
       )}
     </>
