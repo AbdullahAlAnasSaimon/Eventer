@@ -16,6 +16,8 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
+import deleteIcon from "@/public/icons/delete.svg";
+
 // import { deleteEvent } from "@/lib/actions/event.actions";
 
 export default function DeleteConfirmation({ eventId }: { eventId: string }) {
@@ -25,12 +27,7 @@ export default function DeleteConfirmation({ eventId }: { eventId: string }) {
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <Image
-          src="/assets/icons/delete.svg"
-          alt="edit"
-          width={20}
-          height={20}
-        />
+        <Image src={deleteIcon} alt="edit" width={20} height={20} />
       </AlertDialogTrigger>
 
       <AlertDialogContent className="bg-white">
