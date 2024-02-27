@@ -25,11 +25,18 @@ export default function Card({ event, hasOrderLink, hidePrice }: CardProps) {
     <div className="group relative flex main-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
       <Link
         href={`/events/${event._id}`}
-        style={{
-          backgroundImage: `url(${event.imageUrl})`,
-        }}
+        // style={{
+        //   backgroundImage: `url(${event.imageUrl})`,
+        // }}
         className="flex-center flex-grow bg-gray-50 bg-cover bg-center text-grey-500"
-      />
+      >
+        <Image
+          src={event.imageUrl}
+          alt="event image"
+          width={380}
+          height={380}
+        />
+      </Link>
 
       {/* Is Event Creator */}
 
@@ -52,7 +59,7 @@ export default function Card({ event, hasOrderLink, hidePrice }: CardProps) {
             <span className="p-semibold-14 w-min rounded-lg bg-green-100 px-4 py-1 text-green-60">
               {event.isFree ? "Free" : `$${event.price}`}
             </span>
-            <p className="p-semibold-14 w-min rounded-full bg-grey-500/10 px-4 py-1 text-grey-500">
+            <p className="p-semibold-14 w-min rounded-full bg-grey-500/10 px-4 py-1 text-grey-500 line-clamp-1">
               {event.category.name}
             </p>
           </div>
