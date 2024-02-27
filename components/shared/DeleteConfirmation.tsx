@@ -18,7 +18,7 @@ import {
 
 import deleteIcon from "@/public/icons/delete.svg";
 
-// import { deleteEvent } from "@/lib/actions/event.actions";
+import { deleteEvent } from "@/lib/actions/event.actions";
 
 export default function DeleteConfirmation({ eventId }: { eventId: string }) {
   const pathname = usePathname();
@@ -44,7 +44,7 @@ export default function DeleteConfirmation({ eventId }: { eventId: string }) {
           <AlertDialogAction
             onClick={() =>
               startTransition(async () => {
-                // await deleteEvent({ eventId, path: pathname });
+                await deleteEvent({ eventId, path: pathname });
               })
             }
           >
