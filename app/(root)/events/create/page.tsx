@@ -9,9 +9,7 @@ export default function CreateEvent() {
     <>
       <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
         <div className="w-11/12 mx-auto">
-          <h3 className="wrapper h3-bold md:text-center sm:text-left">
-            Create Event
-          </h3>
+          <h3 className="wrapper h3-bold text-center">Create Event</h3>
         </div>
       </section>
 

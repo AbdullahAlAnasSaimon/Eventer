@@ -32,13 +32,21 @@ import dollar from "@/public/icons/dollar.svg";
 import link from "@/public/icons/link.svg";
 import { useRouter } from "next/navigation";
 import { createEvent } from "@/lib/actions/event.actions";
+import { IEvent } from "@/lib/database/models/event.model";
 
 type EventFormProps = {
   userId: string;
   type: "Create" | "Update";
+  event?: IEvent;
+  eventId?: string;
 };
 
-export default function EventForm({ userId, type }: EventFormProps) {
+export default function EventForm({
+  userId,
+  type,
+  event,
+  eventId,
+}: EventFormProps) {
   const [files, setFiles] = useState<File[]>([]);
   const initialValues = eventDefaultValues;
   const { startUpload } = useUploadThing("imageUploader");
@@ -51,7 +59,6 @@ export default function EventForm({ userId, type }: EventFormProps) {
 
   // Define a submit handler.
   async function onSubmit(values: z.infer<typeof eventFormSchema>) {
-    console.log(values);
     let uploadedImageUrl = values.imageUrl;
 
     if (files.length > 0) {
