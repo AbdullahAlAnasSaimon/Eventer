@@ -24,13 +24,13 @@ export default function Header() {
           <div className="flex w-auto justify-end gap-3">
             <SignedIn>
               <UserButton afterSignOutUrl="/" />
+              <MobileNav />
             </SignedIn>
             <SignedOut>
               <Button asChild className="rounded-sm" size="lg">
                 <Link href="/sign-in">Log In</Link>
               </Button>
             </SignedOut>
-            <MobileNav />
           </div>
         </div>
       </div>
