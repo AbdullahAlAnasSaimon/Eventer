@@ -15,12 +15,14 @@ export default async function Profile() {
     <>
       {/* my tickets */}
       <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-8">
-        <div className="wrapper flex items-center justify-center md:justify-between">
-          <h3 className="h3-bold text-center">My Tickets</h3>
+        <div className="w-11/12 mx-auto">
+          <div className="wrapper flex items-center justify-center md:justify-between">
+            <h3 className="h3-bold text-center">My Tickets</h3>
 
-          <Button asChild className="button hidden sm:flex">
-            <Link href="/#events">Explore More Events</Link>
-          </Button>
+            <Button asChild size="lg" className="button hidden sm:flex">
+              <Link href="/#events">Explore More Events</Link>
+            </Button>
+          </div>
         </div>
       </section>
       {/* <section className="wrapper my-8">
@@ -38,26 +40,30 @@ export default async function Profile() {
 
       {/* events organized */}
       <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-8">
-        <div className="wrapper flex items-center justify-center md:justify-between">
-          <h3 className="h3-bold text-center">Events Organized</h3>
+        <div className="w-11/12 mx-auto">
+          <div className="wrapper flex items-center justify-center md:justify-between">
+            <h3 className="h3-bold text-center">Events Organized</h3>
 
-          <Button asChild className="button hidden sm:flex">
-            <Link href="/events/create">Create New Event</Link>
-          </Button>
+            <Button asChild size="lg" className="button hidden sm:flex">
+              <Link href="/events/create">Create New Event</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
       <section className="wrapper my-8">
-        <Collection
-          data={organizedEvents?.data}
-          emptyTitle="No Events has been created yet"
-          emptyStateSubtext="Go create some now"
-          collectionType="Events_Organized"
-          limit={6}
-          page={1}
-          urlParamName="eventsPage"
-          totalPages={2}
-        />
+        <div className="w-11/12 mx-auto">
+          <Collection
+            data={organizedEvents?.data}
+            emptyTitle="No Events has been created yet"
+            emptyStateSubtext="Go create some now"
+            collectionType="Events_Organized"
+            limit={6}
+            page={1}
+            urlParamName="eventsPage"
+            totalPages={2}
+          />
+        </div>
       </section>
     </>
   );
