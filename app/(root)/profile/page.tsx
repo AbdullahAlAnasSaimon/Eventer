@@ -1,9 +1,16 @@
 import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
+import { getEventsByUser } from "@/lib/actions/event.actions";
+import { auth } from "@clerk/nextjs";
 import Link from "next/link";
 import React from "react";
 
-export default function Profile() {
+export default async function Profile() {
+  const { sessionClaims } = auth();
+  const userId = sessionClaims?.userId as string;
+
+  const organizedEvents = await getEventsByUser({ userId, page: 1 });
+
   return (
     <>
       {/* my tickets */}
@@ -40,9 +47,9 @@ export default function Profile() {
         </div>
       </section>
 
-      {/* <section className="wrapper my-8">
+      <section className="wrapper my-8">
         <Collection
-          data={events?.data}
+          data={organizedEvents?.data}
           emptyTitle="No Events has been created yet"
           emptyStateSubtext="Go create some now"
           collectionType="Events_Organized"
@@ -51,7 +58,7 @@ export default function Profile() {
           urlParamName="eventsPage"
           totalPages={2}
         />
-      </section> */}
+      </section>
     </>
   );
 }
