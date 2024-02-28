@@ -9,6 +9,7 @@ import Image from "next/image";
 import calender from "@/public/icons/calendar.svg";
 import location from "@/public/icons/location.svg";
 import Collection from "@/components/shared/Collection";
+import CheckoutButton from "@/components/shared/CheckoutButton";
 
 export default async function EventDetails({
   params: { id },
@@ -59,6 +60,7 @@ export default async function EventDetails({
                 </div>
               </div>
               {/* checkout button */}
+              <CheckoutButton event={event} />
 
               <div className="flex flex-col gap-5">
                 <div className="flex gap-2 md:gap-3">
@@ -98,7 +100,9 @@ export default async function EventDetails({
                 <p className="p-bold-20 text-grey-600">What you'll learn</p>
                 <p className="p-medium-16">{event.description}</p>
                 <p className="p-medium-16 truncate text-primary-500 underline">
-                  {event.url}
+                  <a href={event.url} target="_blank">
+                    {event.url}
+                  </a>
                 </p>
               </div>
             </div>
