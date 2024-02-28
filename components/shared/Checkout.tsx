@@ -2,12 +2,10 @@ import { IEvent } from "@/lib/database/models/event.model";
 import React, { useEffect } from "react";
 import { Button } from "../ui/button";
 import { loadStripe } from "@stripe/stripe-js";
+import { checkoutOrder } from "@/lib/actions/order.actions";
 
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-);
+// Make sure to call `loadStripe` outside of a component’s render to avoid recreating the `Stripe` object on every render.
+loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 export default function Checkout({
   event,
@@ -31,7 +29,15 @@ export default function Checkout({
   }, []);
 
   const onCheckout = async () => {
-    console.log("checkout");
+    const order = {
+      eventId: event._id,
+      eventTitle: event.title,
+      price: event.price,
+      isFree: event.isFree,
+      buyerId: userId,
+    };
+
+    await checkoutOrder(order);
   };
 
   return (
