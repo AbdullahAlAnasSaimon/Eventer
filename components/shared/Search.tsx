@@ -10,7 +10,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 export default function Search({
   placeholder = "Search title...",
 }: {
-  placeholder: string;
+  placeholder?: string;
 }) {
   const [query, setQuery] = useState("");
   const searchParams = useSearchParams();
