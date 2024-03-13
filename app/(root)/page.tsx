@@ -5,6 +5,8 @@ import heroImg from "@/public/images/hero.png";
 import Collection from "@/components/shared/Collection";
 import { getAllEvents } from "@/lib/actions/event.actions";
 import { SearchParamProps } from "@/types";
+import Search from "@/components/shared/Search";
+import CategoryFilter from "@/components/shared/CategoryFilter";
 
 export default async function Home({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1;
@@ -63,7 +65,8 @@ export default async function Home({ searchParams }: SearchParamProps) {
           </h2>
 
           <div className="flex w-full flex-col gap5 md:flex-row">
-            Search CategoryFilter
+            <Search />
+            <CategoryFilter />
           </div>
 
           <Collection
